@@ -1,24 +1,44 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+ import Navbar from './components/NavSection/Navbar.js';
+import HomePage from './components/HomePage/HomePage';
+import ForumPage from './components/ForumPage/ForumPage';
+import { BrowserRouter,Switch,Route } from 'react-router-dom';
+import NotFound from './components/NotFound/NotFound';
+import RestPage from './components/RestPage/RestPage';
+import Wallet from './components/Wallet/Wallet';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return (  
+      <BrowserRouter>
+      <Navbar></Navbar>
+
+          <Switch>
+            
+              <div>
+            <Route path="/home">
+                 <HomePage></HomePage>
+            </Route>
+            <Route exact path="/">
+            <HomePage></HomePage>
+
+            </Route>
+            <Route path="/forum">
+              <ForumPage></ForumPage>
+            </Route>
+            <Route path="/wallet">
+              <Wallet></Wallet>
+            </Route>
+            
+           
+            </div>
+            
+            
+           </Switch>
+          
+          </BrowserRouter> 
+
   );
 }
 
